@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 // =============================== Books router =============
 
 Route::get('books',[BookController::class,'index'])->name('books');
@@ -28,19 +30,16 @@ Route::get('books/{book}/edit',[BookController::class,'edit'])->name('books.edit
 Route::post('books/{book}/update',[BookController::class,'update'])->name('books.update');
 Route::get('books/{book}/delete',[BookController::class,'destroy'])->name('books.destroy');
 
-
-
 // Route::resource('books',BookController::class);
-
 
 // =============================== users router =============
 
-Route::get('users',[UserController::class,'index'])->name('users');
-Route::get('users/create',[UserController::class,'create'])->name('users.create');
-Route::post('users',[UserController::class,'store'])->name('users.store');
-Route::get('users/{user}/edit' ,[UserController::class,'edit'])->name('users.edit');
-route::put('users/{user}/update' ,[UserController::class,'update'])->name('users.update');
-route::get('users/{user}/delete' ,[UserController::class,'destroy'])->name('users.destroy');
+// Route::get('users',[UserController::class,'index'])->name('users');
+// Route::get('users/create',[UserController::class,'create'])->name('users.create');
+// Route::post('users',[UserController::class,'store'])->name('users.store');
+// Route::get('users/{user}/edit' ,[UserController::class,'edit'])->name('users.edit');
+// route::put('users/{user}/update' ,[UserController::class,'update'])->name('users.update');
+// route::get('users/{user}/delete' ,[UserController::class,'destroy'])->name('users.destroy');
 
 // =============================== resrevations router =============
 
@@ -48,18 +47,22 @@ Route::get('reservations',[ReservationController::class,'index'])->name('reserva
 Route::get('reservations/create',[ReservationController::class,'create'])->name('reservations.create');
 Route::post('reservations',[ReservationController::class,'store'])->name('reservations.store');
 Route::get('reservations/{reservation}/edit' ,[ReservationController::class,'edit'])->name('reservations.edit');
-route::put('reservations/{reservation}/update' ,[ReservationController::class,'update'])->name('reservations.update');
-route::get('reservations/{reservation}/delete' ,[ReservationController::class,'destroy'])->name('reservations.destroy');
-
+Route::put('reservations/{reservation}/update' ,[ReservationController::class,'update'])->name('reservations.update');
+Route::get('reservations/{reservation}/delete' ,[ReservationController::class,'destroy'])->name('reservations.destroy');
 
 // =============================== router =============
-Route::get('dashboard',[BookController::class, 'getAllfordashboard'])->name('dashboard');
+Route::get('dashboardAdmin',[BookController::class, 'getAllfordashboard'])->name('dashboardAdmin');
 
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/Home', function () {
+    return view('index');
+})->middleware(['auth', 'verified'])->name('Home');
+
+// Route::get('/Home',function(){
+//     return view('index');
+// });
+ Route::get('Home',[BookController::class,'getAllforhome'])->name('Home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

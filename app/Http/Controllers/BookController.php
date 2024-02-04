@@ -77,7 +77,14 @@ public function destroy(Book $book)
 public function getAllfordashboard(){
 
        $books = Book::all();
-       return view('Admin_dash.dashboard',['books' => $books]);
+       return view('Admin_dash.dashboardAdmin',['books' => $books]);
+
+}
+
+public function getAllforhome(){
+
+    $books = Book::all();
+    return view('index',['books' => $books]);
 
 }
 

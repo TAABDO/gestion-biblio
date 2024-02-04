@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -29,15 +30,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-       $user=Auth::user();
+       $user= Auth::user();
 
-       if($user->role->name ==='Admin')
-       {
-        return redirect()->route('dashboard');
-       }
-       else{
-        return redirect()->route('welcome');
-       }
+       if ($user->role->name === 'Admin') {
+
+        return redirect()->route('dashboardAdmin');
+    }
+        elseif ($user->role->name === 'user') {
+
+        return redirect()->route('index');
+    }
+
+    return redirect('/login');
+
     }
 
     /**

@@ -1,24 +1,4 @@
-<?php 
-use App\controllers\Usercontroller;
-require __DIR__.'/../../../vendor/autoload.php';
 
-// if (isset($_POST['submit'])) {
-//     $user_id = $_POST['id']; 
-//     $role = $_POST['role'];
-
-//     $stmt = $connect->prepare("UPDATE users SET role = ?  WHERE id = ?");
-//     $stmt->bind_param("ssi", $email, $role);
-
-//     if ($stmt->execute()) {
-//         echo "User information updated!";
-//     } else {
-//         echo "Error: " . $stmt->error;
-//     }
-
-//     $stmt->close();
-//     $connect->close();
-// }
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,11 +35,11 @@ require __DIR__.'/../../../vendor/autoload.php';
 			</div>
 			<div class=" offset-lg-3 col-lg-3 col-md-6 col-sm-12 btns">
 				<button><a href="clients.php"> < Go Back </a></button>
-				
+
 			</div>
 		</div>
 	</div>
-<form class="formajouter"  method="post" >
+<form class=""  method="post" action="" >
 
   <div class="mb-3">
     <label for="exampleInputdelivery_adresse" class="form-label" style="color:white">Customer_Name</label>
@@ -78,12 +58,12 @@ require __DIR__.'/../../../vendor/autoload.php';
   <div class=" mb-3" >
     <label for="exampleInputBill" class="form-label" style="color:white">Bill</label>
     <input type="text" name="Bill" value="<?php echo $row['Bill']?>"class="form-control w-50 " id="exampleInputBill" aria-describedby="clientHelp">
-    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+    <!-- <div id="emailHelp" class="form-text">We ll never share your email with anyone else.</div> -->
   </div>
   <button type="submit" name="submit" class="btn btn-primary">save</button>
 </form>
 </div>
-    
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
